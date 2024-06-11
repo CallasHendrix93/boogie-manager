@@ -147,7 +147,9 @@ def check_genre_placement(df, rootfolder=ROOTFOLDER, splitfolder=SPLITFOLDER, fo
     :return misplaced_artists : (set) set of all unique artists whose music has been found to be misplaced
     """
 
-    folder_dict = {idx: pathlib.Path(folder_df.loc[idx, 'genre folder']).relative_to(rootfolder) for idx in folder_df.index}
+    rp = pathlib.Path(rootfolder)
+
+    folder_dict = {idx: rp / folder_df.loc[idx, 'genre folder'] for idx in folder_df.index}
     folder_dict_extended = {}
     for idx in folder_dict.keys():
         parentfolders = [folder_dict[idx]]
@@ -156,12 +158,12 @@ def check_genre_placement(df, rootfolder=ROOTFOLDER, splitfolder=SPLITFOLDER, fo
         if str(folder_dict[idx].parent.parent) != '.':
             parentfolders.append(folder_dict[idx].parent.parent)
         folder_dict_extended[idx] = parentfolders
-    split_folder = pathlib.Path(splitfolder)
+    split_folder = rp / splitfolder
 
     misplaced_artists = set()
     for i in range(len(df)):
         genre = df['genre'].iloc[i]
-        folder = df['genre folder'].iloc[i]
+        folder = rp / df['genre folder'].iloc[i]
         if folder not in folder_dict_extended[genre] and folder != split_folder:
             artist = df['artist'].iloc[i]
             misplaced_artists.add(artist)
