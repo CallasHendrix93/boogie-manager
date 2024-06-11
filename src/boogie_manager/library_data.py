@@ -69,7 +69,8 @@ def add_derived_cols(df, sourcedict=SOURCEDICT, sep='.'):
                        for easier grouping and processing
 
     :param df         : (DataFrame) the original dataframe
-    :param sourcedict : (dict)
+    :param sourcedict : (dict) dictionary mapping various values for the file source tag (stored in
+                        the comment field) to a smaller set of shorter names
     :param sep        : (str) separator for nesting levels used in genre tags, e.g. '.', '-' or '|'.
                         If None, genre tags are assumed not to use nesting and the interpretation of
                         nesting levels is skipped. See longer comment below
@@ -134,10 +135,14 @@ def check_genre_placement(df, rootfolder=ROOTFOLDER, splitfolder=SPLITFOLDER, fo
     check_genre_placement : check if each file's placement in the directory structure matches its genre tag
                             (only useful if you have a genre-based directory structure)
 
-    :param df          : (DataFrame)
-    :param rootfolder  : (str)
-    :param splitfolder : (str)
-    :param folder_df   : (DataFrame)
+    :param df          : (DataFrame) dataframe with information about the music library, as returned by 
+                         'grab_all_music_files' 
+    :param rootfolder  : (str) root folder where the entire music library is stored
+    :param splitfolder : (str) folder where the music of 'split' artists is stored (i.e. artists whose music
+                         is split across multiple genres at the highest nesting level)
+    :param folder_df   : (DataFrame) dataframe with all the different genre tags in the library as index,
+                         and a single column which stores the (absolute) path of the folder where that genre
+                         should be stored
 
     :return misplaced_artists : (set) set of all unique artists whose music has been found to be misplaced
     """
