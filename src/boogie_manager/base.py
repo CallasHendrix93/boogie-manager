@@ -154,6 +154,12 @@ class AudioWrapper:
 
     def get_length(self):
 
+        """
+        get_length : get the length of the audio file
+
+        :return length : (float) length of the audio file in seconds
+        """
+
         if self.filetype == 'MP3':
             length = self.mp3obj.info.length
         elif self.filetype == 'MP4':
