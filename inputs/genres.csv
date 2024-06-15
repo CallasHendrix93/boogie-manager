@@ -1,0 +1,98 @@
+﻿genre;genre folder
+00.01 early Baroque;00 classical
+00.02 Baroque;00 classical
+00.03 Classical;00 classical
+00.04 Classical/Romantic transition;00 classical
+00.05.01 Chopin + Liszt;00 classical
+00.05.02 Central European Romantic;00 classical
+00.05.03 French Romantic;00 classical
+00.05.04 Italian Romantic;00 classical
+00.05.05 Russian Romantic;00 classical
+00.05.06 British Romantic;00 classical
+00.06.01 Baroque opera;00 classical
+00.06.02 Classical opera;00 classical
+00.06.03 bel canto;00 classical
+00.06.04 Verdi era;00 classical
+00.06.05 verismo;00 classical
+00.06.06 French opera;00 classical
+00.06.07 operetta;00 classical
+00.06.08 20th-century opera;00 classical
+01.01.01 trad '70s;01 metal/01 trad/01 trad '70s
+01.01.02 trad '80s;01 metal/01 trad/02 trad '80s
+01.01.03 filthy trad;01 metal/01 trad/03 filthy trad
+01.02 doom;01 metal/02 doom
+01.03.01 USPM;01 metal/03 power/01 USPM
+01.03.02 EUPM;01 metal/03 power/02 EUPM
+01.04.01 power/thrash + tech thrash;01 metal/04 thrash/01 power-thrash + tech thrash
+01.04.02 heavy/speed/thrash;01 metal/04 thrash/02 heavy-speed-thrash
+01.04.03 thrash-thrash;01 metal/04 thrash/03 thrash-thrash
+01.04.04 brutal thrash;01 metal/04 thrash/04 brutal thrash
+01.05.01 1st wave black;01 metal/05 black/01 1st wave black
+01.05.02 2nd wave black;01 metal/05 black/02 2nd wave black
+01.05.03 occult(ish) black;01 metal/05 black/03 occult(ish) black
+01.05.04 black/thrash;01 metal/05 black/04 black-thrash
+01.05.05 melodic black;01 metal/05 black/05 melodic black
+01.05.06 finnblack;01 metal/05 black/06 finnblack
+01.06 death;01 metal/06 death
+01.07 melodeath + folk;01 metal/07 melodeath + folk
+01.08 stoner + newer trad;01 metal/08 stoner  + newer trad
+02.01.01 pop/rock '60s;02 pop + rock/01 '60s(ish)/01 pop + rock '60s
+02.01.02 psychedelic/experimental;02 pop + rock/01 '60s(ish)/02 psychedelic + experimental
+02.01.03 blues/roots rock;02 pop + rock/01 '60s(ish)/03 blues + roots rock
+02.01.04 heavy blues-rock;02 pop + rock/01 '60s(ish)/04 heavy blues-rock
+02.02.01 pop '70s;02 pop + rock/02 '70s(ish)/01 pop '70s
+02.02.02 prog pop '70s;02 pop + rock/02 '70s(ish)/02 prog pop '70s
+02.02.03 prog rock;02 pop + rock/02 '70s(ish)/03 prog rock
+02.02.04 rock '70s;02 pop + rock/02 '70s(ish)/04 rock '70s
+02.02.05 boogie rock;02 pop + rock/02 '70s(ish)/05 boogie rock
+02.02.06 theatrical rock;02 pop + rock/02 '70s(ish)/06 theatrical rock
+02.02.07 hard rock;02 pop + rock/02 '70s(ish)/07 hard rock
+02.02.08 (proto-)punk;02 pop + rock/02 '70s(ish)/08 (proto-)punk
+02.03.01 pop '80s;02 pop + rock/03 '80s(ish)/01 pop '80s
+02.03.02 new wave;02 pop + rock/03 '80s(ish)/02 new wave
+02.03.03 reggae/ska revival;02 pop + rock/03 '80s(ish)/03 reggae + ska revival
+02.03.04 rock '80s;02 pop + rock/03 '80s(ish)/04 rock '80s
+02.03.05 hard rock (glam);02 pop + rock/03 '80s(ish)/05 hard rock (glam)
+02.03.06 funk rock;02 pop + rock/03 '80s(ish)/06 funk rock
+02.04 singer-songwriters;02 pop + rock/04 singer-songwriters
+02.05 nederpop;02 pop + rock/05 nederpop
+02.06 '90s(ish);02 pop + rock/06 '90s(ish)
+02.07.01 pop/rock '00s/'10s;02 pop + rock/07 21st century/01 pop-rock '00s-'10s
+02.07.02 retro-rock;02 pop + rock/07 21st century/02 retro-rock
+02.07.03 pop 2020s;02 pop + rock/07 21st century/03 pop 2020s
+03.01.01 early soul;03 soul + funk + disco/01 soul/01 early soul
+03.01.02 soul '60s - Stax(ish);03 soul + funk + disco/01 soul/02 soul '60s - Stax(ish)
+03.01.03 soul '60s - Motown;03 soul + funk + disco/01 soul/03 soul '60s - Motown
+03.01.04 Philadelphia soul;03 soul + funk + disco/01 soul/04 Philadelphia soul
+03.01.05 soul '70s;03 soul + funk + disco/01 soul/05 soul '70s
+03.02 funk;03 soul + funk + disco/02 funk
+03.03 disco;03 soul + funk + disco/03 disco
+04.01.01 acoustic blues;04 roots/01 blues/01 acoustic blues
+04.01.02 electric blues;04 roots/01 blues/02 electric blues
+04.02.01 rock & roll/rockabilly;04 roots/02 R&B + rock & roll/01 rock & roll + rockabilly
+04.02.02 doo-wop/vocal groups;04 roots/02 R&B + rock & roll/02 doowop
+04.02.03 piano R&B;04 roots/02 R&B + rock & roll/03 piano R&B
+04.02.04 surf/instrumental/poppy rock & roll;04 roots/02 R&B + rock & roll/04 surf + instrumental + poppy rock & roll
+04.03.01 country & western '20s-'50s;04 roots/03 country & western/01 country & western '20s-'50s
+04.03.02 country '60s;04 roots/03 country & western/02 country '60s
+04.04 gospel;04 roots/04 gospel
+05.01 jazz '20s-'40s;05 jazz/01 jazz '20s-'40s
+05.02 jazz '50s/'60s;05 jazz/02 jazz '50s-'60s
+06.01 chansons & crooners;06 trad pop/01 chansons & crooners
+06.02 musicals;06 trad pop/02 musicals
+06.03 kleinkunst;06 trad pop/03 kleinkunst
+06.04 smartlappen;06 trad pop/04 smartlappen
+07.01 hip-hop '80s;07 hip-hop/01 hip-hop '80s
+07.02 gangsta rap;07 hip-hop/02 gangsta rap
+07.03 hip-hop '90s;07 hip-hop/03 hip-hop '90s
+07.04 rap rock;07 hip-hop/04 rap rock
+07.05 nederhop;07 hip-hop/05 nederhop
+08.01 early electronics;08 electronic/01 early electronics
+08.02 electronic '80s;08 electronic/02 electronic '80s
+08.03 EDM '90s;08 electronic/03 EDM '90s
+08.04 industrial;08 electronic/04 industrial
+99.01 hardcore punk;99 various/01 hardcore punk
+99.02 reggae/ska (original scene);99 various/02 reggae + ska (original scene)
+99.03 folk/world;99 various/03 folk + world
+99.04 film scores;99 various/04 film scores
+99.05 military;99 various/05 military

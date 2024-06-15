@@ -7,17 +7,18 @@ import pathlib
 inputs_folder = pathlib.Path(__file__).resolve().parent.parent.parent / 'inputs'
 
 username = getpass.getuser()
-ROOTFOLDER = pathlib.Path(r'C:\Users\{0}\Music'.format(username))
-FIELDNAMES = pd.read_excel(inputs_folder / 'fieldnames.xlsx', index_col=0)
-TITLECASE_EN = tuple(pd.read_excel(inputs_folder / 'titlecase_words.xlsx')['word'])
+ROOTFOLDER = pathlib.Path(r'C:/Users/{0}/Music'.format(username))
+
+FIELDNAMES = pd.read_csv(inputs_folder / 'fieldnames.csv', index_col=0, header=0, sep=';')
+TITLECASE_EN = tuple(pd.read_csv(inputs_folder / 'titlecase_words.csv', index_col=None, header=0)['word'])
+
 MIME_TYPES = {'.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': 'image/png', '.bmp': 'image/bmp'}
 MP4_COVERTYPES = {'.jpg': 'FORMAT_JPEG', '.jpeg': 'FORMAT_JPEG', '.png': 'FORMAT_PNG'}
-
 FILETYPES = {'.m4a': 'ALAC', '.mp3': 'MP3', '.flac': 'FLAC'}
 
 # ================= Everything below this line is specific to author's library, probably not relevant for other users =================  
 
-FOLDER_DF = pd.read_excel(inputs_folder / 'genres.xlsx', index_col=0)
+FOLDER_DF = pd.read_csv(inputs_folder / 'genres.csv', index_col=0, header=0, sep=';')
 
 SPLITFOLDER = '98 splits'
 

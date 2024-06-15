@@ -1,0 +1,24 @@
+﻿;MP3;MP4;FLAC
+title;TIT2;©nam;title
+artist;TPE1;©ART;artist
+album;TALB;©alb;album
+year;TDRC;©day;date
+genre;TCON;©gen;genre
+track;TRCK;trkn;tracknumber
+disc;TPOS;disk;discnumber
+comment;COMM::eng;©cmt;comment
+album art;APIC:;covr;
+sort artist;TSOP;soar;artistsortorder
+sort album;TSOA;soal;albumsortorder
+album artist;TPE2;aART;albumartist
+compilation;TCMP;cpil;itunescompilation
+retrospective;TXXX:Retrospective;----:com.apple.iTunes:Retrospective;retrospective
+performer;TXXX:PERFORMER;----:com.apple.iTunes:PERFORMER;performer
+performer compilation;TXXX:performercompilation;----:com.apple.iTunes:performercompilation;performercompilation
+albumyear;TXXX:albumyear;----:com.apple.iTunes:albumyear;albumyear
+flag_homework;TXXX:flag_homework;----:com.apple.iTunes:flag_homework;flag_homework
+flag_poorsource;TXXX:flag_poorsource;----:com.apple.iTunes:flag_poorsource;flag_poorsource
+flag_checkquality;TXXX:flag_checkquality;----:com.apple.iTunes:flag_checkquality;flag_checkquality
+flag_dubiousdate;TXXX:flag_dubiousdate;----:com.apple.iTunes:flag_dubiousdate;flag_dubiousdate
+flag_rare;TXXX:flag_rare;----:com.apple.iTunes:flag_rare;flag_rare
+ranking;TXXX:ranking;----:com.apple.iTunes:ranking;ranking
