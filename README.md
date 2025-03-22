@@ -42,10 +42,6 @@ The last one requires as an input another wrapper object: ``AlbumArt``. Mutagen'
 
 **N.B.:** Both the ``p`` argument for creating an ``AudioWrapper`` object, and the ``image_path`` argument for creating an ``AlbumArt`` object, must be a ``pathlib.Path`` object pointing to the file in question, not just a string of the file path.
 
-## Example code
-
-TBA
-
 ## Mapping of field names for MP3, MP4 and FLAC files
 
 The file ``inputs/fieldnames.csv`` contains the default mappings from tag names (as you provide them to the ``set_value()`` and ``get_value()`` methods of ``AudioWrapper``) to the actual tags in the file. You can edit this file to change the mappings or add more fields, as long as you don't touch the column names (header row). 
