@@ -16,7 +16,7 @@ Boogie Manager is a package for music nerds who still have a large music library
 
 Dependencies (outside of Python standard library): ``matplotlib``, ``mutagen``, ``pandas``, ``numpy``
 
-Project status: code itself done; some functions still need more commenting; readme under construction
+Project status: code itself done; some functions in ``batch_ops.py`` still need more commenting; readme under construction
 
 # ``base.py``: wrappers around MP3/MP4/FLAC tagging functions
 
