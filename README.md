@@ -16,7 +16,7 @@ Boogie Manager is a package for music nerds who still have a large music library
 
 Dependencies (outside of Python standard library): ``matplotlib``, ``mutagen``, ``pandas``, ``numpy``
 
-Project status: code itself done; some functions still need more commenting; readme under construction
+Project status: code itself done; some functions in ``batch_ops.py`` still need more commenting; readme under construction
 
 # ``base.py``: wrappers around MP3/MP4/FLAC tagging functions
 
@@ -44,7 +44,12 @@ The last one requires as an input another wrapper object: ``AlbumArt``. Mutagen'
 
 ## Example code
 
-TBA
+    filepath = r'C:\Users\henk\Music\Jackson, Joe\Is She Really Going Out with Him.mp3'
+    p = pathlib.Path(filepath)
+    wrapper = AudioWrapper(p)
+    wrapper.set_value('album', 'Look Sharp')
+    wrapper.set_value('track', '3')
+    wrapper.save()
 
 ## Mapping of field names for MP3, MP4 and FLAC files
 
@@ -70,7 +75,13 @@ compilation | TCMP | cpil | itunescompilation
 
 # ``batch_ops.py``: batch tagging operations on folders
 
-TBA
+This file contains a number of functions for batch operations.
+
+``titles2filenames(folder)`` does what it says on the tin: it renames all music files in the targeted folder (including subfolders) based on their "title" metadata tag. E.g. a file called ``10 - Michael Jackson - Smooth Criminal.flac`` with title ``Smooth Criminal`` will be called ``Smooth Criminal.flac`` after this operation. The default setting is to automatically apply "title case", which means a standard list of words will be forced to lowercase. This list can be found in ``inputs\titlecase_words.csv``, and ends up in the argument ``titlecase_list`` via ``set_defaults.py``.
+
+``strip_phrase(folder, rstrip_phrase)`` removes a specific phrase from the end of all filenames of music files in the target folder (including subfolders). Useful if all files have e.g. `` (Remastered 2009)`` at the end of their name and you want to get rid of that. Optionally you can specify an ``lstrip_phrase`` too, for a string you want to remove from the *start* of all filenames, but this argument is set to ``None`` by default.
+
+Other functions TBA
 
 # ``library_data.py`` and ``graphs.py``: data collection and analysis
 
