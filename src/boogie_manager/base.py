@@ -6,7 +6,7 @@ from mutagen.mp3 import MP3
 from mutagen.mp4 import MP4, MP4Cover
 import numpy as np
   
-from boogie_manager.set_defaults import *
+from .set_defaults import *
 
 
 class AudioWrapper:

@@ -1,6 +1,6 @@
 import pathlib
 
-from boogie_manager.set_defaults import *
+from .set_defaults import *
 
 def clean_album_art(folder):
     

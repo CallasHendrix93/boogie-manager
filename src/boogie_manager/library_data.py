@@ -4,8 +4,8 @@ import numpy as np
 import pandas as pd
 import pathlib
 
-from boogie_manager.base import AudioWrapper
-from boogie_manager.set_defaults import *
+from .base import AudioWrapper
+from .set_defaults import *
 
 
 def grab_all_music_files(basepath=ROOTFOLDER, require_numeric=True, tagdf=FIELDNAMES):

@@ -2,8 +2,8 @@
 
 import pathlib
 
-from boogie_manager.set_defaults import *
-from boogie_manager.base import AudioWrapper, AlbumArt
+from .set_defaults import *
+from .base import AudioWrapper, AlbumArt
 
 
 def titles2filenames(folder, titlecase=True, titlecase_list=TITLECASE_EN, tagdf=FIELDNAMES):
