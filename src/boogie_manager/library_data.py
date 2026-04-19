@@ -109,9 +109,9 @@ def add_derived_cols(df, sourcedict=SOURCEDICT, sep='.'):
     for filepath in df_extended.index:
         lvl1parent = filepath.parent
         if lvl1parent.stem.startswith('Disc '):
-            genrefolders.append(lvl1parent.parent.parent.parent)
+            genrefolders.append(str(lvl1parent.parent.parent.parent))
         else:
-            genrefolders.append(lvl1parent.parent.parent)
+            genrefolders.append(str(lvl1parent.parent.parent))
     df_extended['genre folder'] = genrefolders
 
     # Get the file sources (stored in the comments)
@@ -129,14 +129,14 @@ def add_derived_cols(df, sourcedict=SOURCEDICT, sep='.'):
     return df_extended
 
 
-def check_genre_placement(df, rootfolder=ROOTFOLDER, splitfolder=SPLITFOLDER, folder_df=FOLDER_DF):
+def check_genre_placement(df_extended, rootfolder=ROOTFOLDER, splitfolder=SPLITFOLDER):
 
     """
     check_genre_placement : check if each file's placement in the directory structure matches its genre tag
                             (only useful if you have a genre-based directory structure)
 
-    :param df          : (DataFrame) dataframe with information about the music library, as returned by 
-                         'grab_all_music_files' 
+    :param df_extended : (DataFrame) dataframe with information about the music library, as returned by 
+                         'add_derived_cols'
     :param rootfolder  : (str) root folder where the entire music library is stored
     :param splitfolder : (str) folder where the music of 'split' artists is stored (i.e. artists whose music
                          is split across multiple genres at the highest nesting level)
@@ -144,30 +144,67 @@ def check_genre_placement(df, rootfolder=ROOTFOLDER, splitfolder=SPLITFOLDER, fo
                          and a single column which stores the (absolute) path of the folder where that genre
                          should be stored
 
-    :return misplaced_artists : (set) set of all unique artists whose music has been found to be misplaced
     """
 
     rp = pathlib.Path(rootfolder)
 
-    folder_dict = {idx: rp / folder_df.loc[idx, 'genre folder'] for idx in folder_df.index}
-    folder_dict_extended = {}
-    for idx in folder_dict.keys():
-        parentfolders = [folder_dict[idx]]
-        if str(folder_dict[idx].parent) != '.':
-            parentfolders.append(folder_dict[idx].parent)
-        if str(folder_dict[idx].parent.parent) != '.':
-            parentfolders.append(folder_dict[idx].parent.parent)
-        folder_dict_extended[idx] = parentfolders
-    split_folder = rp / splitfolder
+    # Get the unique combinations of artist + genre tag + genre folder
+    # (excluding all compilation tracks)
 
-    misplaced_artists = set()
-    for i in range(len(df)):
-        genre = df['genre'].iloc[i]
-        folder = rp / df['genre folder'].iloc[i]
-        if folder not in folder_dict_extended[genre] and folder != split_folder:
-            artist = df['artist'].iloc[i]
-            misplaced_artists.add(artist)
+    df_artists_genres = df_extended[df_extended['compilation'].isna()][[
+                        'artist', 'genre level 1', 'genre level 2', 
+                        'genre level 3', 'genre folder']].drop_duplicates(
+                        ).reset_index(drop=True)
+    gb_artists_genres = df_artists_genres.groupby('artist')
+    artists = list(gb_artists_genres.groups.keys())
 
-    return misplaced_artists
+    # Get the folder where each genre is SUPPOSED to be stored
 
+    lvl1folders = {lvl1tag: str(list(rp.glob(lvl1tag + '*'))[0].relative_to(rp)) for lvl1tag in df_extended['genre level 1'].unique()}
+    lvl2folders = {}
+    for lvl2tag in df_extended.groupby(['genre level 1', 'genre level 2']).groups.keys():
+        lvl1folder = list(rp.glob(lvl2tag[0] + '*'))[0]
+        try:
+            lvl2folders[lvl2tag] = str(list(lvl1folder.glob(lvl2tag[1] + '*'))[0].relative_to(rp))
+        except IndexError:
+            lvl2folders[lvl2tag] = str(lvl1folder.relative_to(rp))
+    lvl3folders = {}
+    for lvl3tag in df_extended[~df_extended['genre level 3'].isna()].groupby(['genre level 1', 'genre level 2', 'genre level 3']).groups.keys():
+        lvl1folder = list(rp.glob(lvl3tag[0] + '*'))[0]
+        try:
+            lvl2folder = list(lvl1folder.glob(lvl3tag[1] + '*'))[0]
+        except IndexError:
+            lvl3folders[lvl3tag] = str(lvl1folder.relative_to(rp))
+            continue
+        try:
+            lvl3folders[lvl3tag] = str(list(lvl2folder.glob(lvl3tag[2] + '*'))[0].relative_to(rp))
+        except IndexError:
+            lvl3folders[lvl3tag] = str(lvl2folder.relative_to(rp))
+
+    # Get the artist's supposed folder based on their genre tag(s)
+
+    for artist in artists:
+        subdf_artist = gb_artists_genres.get_group(artist)
+        if len(subdf_artist['genre level 1'].unique()) > 1:
+            supposed_folder = splitfolder
+        elif len(subdf_artist['genre level 1'].unique()) == 1 and len(subdf_artist['genre level 2'].unique()) > 1:
+            supposed_folder = lvl1folders[subdf_artist['genre level 1'].iloc[0]]
+        elif len(subdf_artist['genre level 1'].unique()) == 1 and len(subdf_artist['genre level 2'].unique()) == 1 and \
+            (len(subdf_artist['genre level 3'].unique()) > 1 or any(subdf_artist['genre level 3'].isna())):
+            artist_genre_tag = (subdf_artist['genre level 1'].iloc[0], subdf_artist['genre level 2'].iloc[0])
+            supposed_folder = lvl2folders[artist_genre_tag]
+        else:
+            artist_genre_tag = (subdf_artist['genre level 1'].iloc[0], subdf_artist['genre level 2'].iloc[0], subdf_artist['genre level 3'].iloc[0])
+            supposed_folder = lvl3folders[artist_genre_tag]
+        genre_folder = subdf_artist['genre folder'].iloc[0]
+
+        # Compare the supposed against the actual folder
+        if genre_folder != supposed_folder:
+            print('Artist misplaced:', artist)
+            print('Supposed location:', supposed_folder)
+            print('Actual location:', genre_folder)
+        # If an artist's non-compilation tracks are split across multiple genre folders, something is wrong as well
+        elif len(subdf_artist['genre folder'].unique()) > 1:
+            print('Artist split over multiple genre folders:', artist)
+            print(subdf_artist['genre folder'].unique())
 
