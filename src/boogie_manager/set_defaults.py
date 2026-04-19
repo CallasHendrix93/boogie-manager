@@ -18,8 +18,6 @@ FILETYPES = {'.m4a': 'ALAC', '.mp3': 'MP3', '.flac': 'FLAC'}
 
 # ================= Everything below this line is specific to author's library, probably not relevant for other users =================  
 
-FOLDER_DF = pd.read_csv(inputs_folder / 'genres.csv', index_col=0, header=0, sep=';')
-
 SPLITFOLDER = '98 splits'
 
 SOURCEDICT = {'CD rip': '1. CD rip',
